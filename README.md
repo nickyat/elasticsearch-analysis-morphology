@@ -64,10 +64,10 @@ PUT /products
 }
 ```
 # Dockerfile
-Образ оригинального elasticsearch 7.16.3 c шагом установки плагина analysis-morphology
+Образ оригинального elasticsearch 7.16.3 с шагом установки плагина analysis-morphology
 
 # Maven 
 тесты не реализованы, собирать
 ```mvn clean package -Dmaven.test.skip=true```
-и далее копировать полученный target/
-сборка артефакта mvn clean package build -D
+и далее копировать полученный /target/releases/elasticsearch-analysis-morphology-7.16.3.zip в существующий кластер и устанавливать через bin/elasticsearch-plugin install file:elasticsearch-analysis-morphology-7.16.3.zip
+
