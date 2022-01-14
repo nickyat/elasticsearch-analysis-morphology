@@ -1,12 +1,13 @@
 # elasticsearch-analysis-morphology
-Плагин для ElasticSearch (7.16.4) реализующий токенезатор для русского и английского языка используюя словари проекта http://aot.ru
+Плагин для ElasticSearch (7.16.3) реализующий анализатор для русского и английского языка, используются словари проекта http://aot.ru
 Оригинальный плагин взят отсюда https://github.com/imotov/elasticsearch-analysis-morphology который в свою очередь использует
 russian_morphology и english_morphology от проекта Russian Morphology for Apache Lucene https://github.com/AKuznetsov/russianmorphology
 Плагин добавляет два analyzers и token filter: "russian_morphology" и "english_morphology"
 
 # Elasticsearch
 
-При создании индекса указываем настройки с указанием анализатора и создаем на основе настроек маппинг.
+При создании индекса указываем настройки с указанием анализатора и создаем на основе настроек маппинг. 
+Пример
 ```
 PUT /products
 {
