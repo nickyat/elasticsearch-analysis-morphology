@@ -64,7 +64,7 @@ PUT /products
 }
 ```
 # Dockerfile
-Образ оригинального elasticsearch 7.16.4 c шагом установки плагина analysis-morphology
+Образ оригинального elasticsearch 7.16.3 c шагом установки плагина analysis-morphology
 
 # Maven 
 тесты не реализованы, собирать
