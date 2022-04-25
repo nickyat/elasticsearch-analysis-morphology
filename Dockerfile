@@ -1,3 +1,3 @@
-FROM elasticsearch:7.16.3
-COPY /target/releases/elasticsearch-analysis-morphology-7.16.3.zip /tmp/elasticsearch-analysis-morphology-7.16.3.zip
-RUN bin/elasticsearch-plugin install file:/tmp/elasticsearch-analysis-morphology-7.16.3.zip
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.1.3
+COPY /target/releases/elasticsearch-analysis-morphology-8.1.3.zip /tmp/elasticsearch-analysis-morphology-8.1.3.zip
+RUN bin/elasticsearch-plugin install file:/tmp/elasticsearch-analysis-morphology-8.1.3.zip
