@@ -1,5 +1,5 @@
 # elasticsearch-analysis-morphology
-Плагин для ElasticSearch (8.1.3) реализующий анализатор для русского и английского языка, используются словари проекта http://aot.ru
+Плагин для ElasticSearch (8.4.1) реализующий анализатор для русского и английского языка, используются словари проекта http://aot.ru
 Оригинальный плагин взят отсюда https://github.com/imotov/elasticsearch-analysis-morphology который в свою очередь использует
 russian_morphology и english_morphology от проекта Russian Morphology for Apache Lucene https://github.com/AKuznetsov/russianmorphology
 Плагин добавляет два analyzers и token filter: "russian_morphology" и "english_morphology"
@@ -64,10 +64,10 @@ PUT /products
 }
 ```
 # Dockerfile
-Образ оригинального elasticsearch 8.1.3 с шагом установки плагина analysis-morphology
+Образ оригинального elasticsearch 8.4.1 с шагом установки плагина analysis-morphology
 
 # Maven 
 тесты не реализованы, собирать
 ```mvn clean package -Dmaven.test.skip=true```
-и далее копировать полученный /target/releases/elasticsearch-analysis-morphology-8.1.3.zip в существующий кластер и устанавливать через bin/elasticsearch-plugin install file:elasticsearch-analysis-morphology-8.1.3.zip
+и далее копировать полученный /target/releases/elasticsearch-analysis-morphology-8.4.1.zip в существующий кластер и устанавливать через bin/elasticsearch-plugin install file:elasticsearch-analysis-morphology-8.4.1.zip
 
