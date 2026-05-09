@@ -1,8 +1,8 @@
 # elasticsearch-analysis-morphology
-Плагин для ElasticSearch (8.4.1) реализующий анализатор для русского и английского языка, используются словари проекта http://aot.ru
+Плагин для Elasticsearch 9.4.0, реализующий анализатор для русского и английского языка. Используются словари проекта http://aot.ru
 Оригинальный плагин взят отсюда https://github.com/imotov/elasticsearch-analysis-morphology который в свою очередь использует
 russian_morphology и english_morphology от проекта Russian Morphology for Apache Lucene https://github.com/AKuznetsov/russianmorphology
-Плагин добавляет два analyzers и token filter: "russian_morphology" и "english_morphology"
+Плагин добавляет два analyzer и два token filter: "russian_morphology" и "english_morphology".
 
 # Elasticsearch
 
@@ -64,10 +64,48 @@ PUT /products
 }
 ```
 # Dockerfile
-Образ оригинального elasticsearch 8.4.1 с шагом установки плагина analysis-morphology
+Образ Elasticsearch 9.4.0 с шагом установки плагина analysis-morphology.
+
+Перед сборкой образа нужно собрать ZIP плагина:
+
+```bash
+mvn clean package -Dmaven.test.skip=true
+docker build -t analysis-morphology:9.4.0 .
+```
 
 # Maven 
-тесты не реализованы, собирать
-```mvn clean package -Dmaven.test.skip=true```
-и далее копировать полученный /target/releases/elasticsearch-analysis-morphology-8.4.1.zip в существующий кластер и устанавливать через bin/elasticsearch-plugin install file:elasticsearch-analysis-morphology-8.4.1.zip
+Сборка:
 
+```bash
+mvn clean package -Dmaven.test.skip=true
+```
+
+Готовый архив:
+
+```text
+target/releases/elasticsearch-analysis-morphology-9.4.0.zip
+```
+
+Установка в существующий кластер:
+
+```bash
+bin/elasticsearch-plugin install file:/path/to/elasticsearch-analysis-morphology-9.4.0.zip
+```
+
+# Smoke test
+
+После сборки Docker-образа можно проверить установку плагина и работу `_analyze`:
+
+```bash
+./scripts/smoke-test.sh
+```
+
+Скрипт запускает временный контейнер `analysis-morphology-smoke` на `127.0.0.1:19200`, проверяет наличие плагина в `_nodes/plugins` и выполняет анализ текста через `russian_morphology`.
+
+В Elasticsearch 9.x при установке classic plugin может появляться предупреждение:
+
+```text
+WARNING: plugin has a policy file with no additional entitlements. Double check this is intentional.
+```
+
+Архив плагина не содержит `plugin-security.policy` или `entitlement-policy.yaml`; предупреждение не блокирует установку.

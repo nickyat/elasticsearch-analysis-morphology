@@ -1,0 +1,15 @@
+.git
+.idea
+.settings
+data
+logs
+work
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.DS_Store
+target/*
+!target/releases/
+!target/releases/elasticsearch-analysis-morphology-9.4.0.zip
