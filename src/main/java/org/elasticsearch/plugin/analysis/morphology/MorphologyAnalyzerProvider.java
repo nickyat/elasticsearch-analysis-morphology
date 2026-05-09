@@ -32,7 +32,7 @@ public class MorphologyAnalyzerProvider extends AbstractIndexAnalyzerProvider<Mo
 
     public MorphologyAnalyzerProvider(Environment environment, String name,
                                       Settings settings, LuceneMorphology luceneMorphology) {
-        super(name, settings);
+        super(name);
         analyzer = new MorphologyAnalyzer(luceneMorphology);
     }
 
